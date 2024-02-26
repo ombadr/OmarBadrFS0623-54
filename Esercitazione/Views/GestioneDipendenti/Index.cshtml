@@ -1,0 +1,25 @@
+﻿
+@model IEnumerable<Esercitazione.Models.Dipendente>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Elenco Dipendenti</h2>
+
+<table class="table">
+    <tr>
+        <th>Nome</th>
+        <th>Cognome</th>
+        <th>Mansione</th>
+      
+    </tr>
+    @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Cognome)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Mansione)</td>
+        
+                </tr>
+            }
+</table>

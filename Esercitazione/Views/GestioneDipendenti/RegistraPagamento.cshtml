@@ -1,0 +1,41 @@
+﻿@model Esercitazione.Models.Pagamento
+@{
+    ViewBag.Title = "RegistraPagamento";
+}
+
+<h2>Registra Pagamento</h2>
+
+@using (Html.BeginForm("RegistraPagamento", "GestioneDipendenti", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+
+<div class="form-group">
+    @Html.LabelFor(model => model.DipendenteId, "Dipendente")
+    @Html.DropDownListFor(model => model.DipendenteId, ViewBag.Dipendenti as IEnumerable<SelectListItem>, "Seleziona Dipendente", new { @class = "form-control" })
+    @Html.ValidationMessageFor(model => model.DipendenteId, "", new { @class = "text-danger" })
+</div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Periodo)
+        @Html.TextBoxFor(model => model.Periodo, new {@class ="form-control", type="month" })
+        @Html.ValidationMessageFor(model => model.Periodo, "", new {@class = "text-danger"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Ammontare)
+        @Html.TextBoxFor(model => model.Ammontare, new {@class ="form-control", type="number", step="0.01" })
+        @Html.ValidationMessageFor(model => model.Ammontare, "", new {@class ="text-danger"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tipo)
+        @Html.DropDownListFor(model => model.Tipo, new SelectList(new List<string> { "Stipendio", "Acconto" }), "Seleziona Tipo Pagamento", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Registra Pagamento</button>
+            }
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

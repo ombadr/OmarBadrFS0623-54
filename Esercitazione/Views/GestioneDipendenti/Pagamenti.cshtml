@@ -1,0 +1,22 @@
+﻿@model IEnumerable<Esercitazione.Models.Pagamento>
+@{
+    ViewBag.Title = "Pagamenti";
+}
+
+<h2>Lista Pagamenti</h2>
+
+<table class="table">
+    <tr>
+        <th>Periodo</th>
+        <th>Ammontare</th>
+        <th>Tipo</th>
+    </tr>
+    @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Periodo)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Ammontare)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+                </tr>
+            }
+</table>

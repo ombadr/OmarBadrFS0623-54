@@ -1,0 +1,49 @@
+﻿@model Esercitazione.Models.Dipendente
+@{
+    ViewBag.Title = "AggiungiDipendente";
+}
+
+<h2>Aggiungi Dipendente</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nome)
+        @Html.TextBoxFor(model => model.Nome, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Cognome)
+        @Html.TextBoxFor(model => model.Cognome, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Indirizzo)
+        @Html.TextBoxFor(model => model.Indirizzo, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.CodiceFiscale)
+        @Html.TextBoxFor(model => model.CodiceFiscale, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Coniugato)
+        <div>
+            @Html.RadioButtonFor(model => model.Coniugato, true, new { @class = "form-check-input", id = "ConiugatoSi" })
+            @Html.Label("ConiugatoSi", "Sì", new { @class = "form-check-label" })
+        </div>
+        <div>
+            @Html.RadioButtonFor(model => model.Coniugato, true, new { @class = "form-check-input", id = "ConiugatoNo" })
+            @Html.Label("ConiugatoNo", "No", new { @class = "form-check-label" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.NumeroFigli)
+        @Html.TextBoxFor(model => model.NumeroFigli, new { @class = "form-control", type="number", min="0", max="20" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Mansione)
+        @Html.TextBoxFor(model => model.Mansione, new { @class = "form-control" })
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Salva</button>
+}
+
